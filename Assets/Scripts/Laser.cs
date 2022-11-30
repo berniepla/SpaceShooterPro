@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
+    //need speed variable = 8
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        //translate laser up
     }
 }
