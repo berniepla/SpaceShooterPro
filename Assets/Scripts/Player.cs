@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _speed = 3.5f;
 
+    [SerializeField]
+    private GameObject _laserPrefab;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -20,6 +23,13 @@ public class Player : MonoBehaviour
     private void Update()
     {
         CalculateMovement();
+
+        // if spacekey hit=> spawn gameobject
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(_laserPrefab, transform.position, Quaternion.identity);
+            //laser needs to travel upwards
+        }
     }
 
     private void CalculateMovement()
