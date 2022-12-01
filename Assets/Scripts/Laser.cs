@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-    //need speed variable = 8
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-    }
+    [SerializeField]
+    private float _speed = 8f;
 
     // Update is called once per frame
     private void Update()
     {
         //translate laser up
+        transform.Translate(transform.up * _speed * Time.deltaTime);
+
+        if (transform.position.y >= 8f)
+        {
+            Destroy(gameObject);
+        }
     }
 }
