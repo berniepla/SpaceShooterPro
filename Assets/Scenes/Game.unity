@@ -405,6 +405,8 @@ MonoBehaviour:
   _laserPrefab: {fileID: 5084437525304424976, guid: 60a8d285e00a99c4ea313c043bbc186a, type: 3}
   _fireRate: 0.15
   _lives: 3
+  _isTripleShotActive: 0
+  _tripleShotPrefab: {fileID: 557722260963834851, guid: b7aa9b4ddd463f04ea3c7a371c543c76, type: 3}
 --- !u!212 &1364379261
 SpriteRenderer:
   m_ObjectHideFlags: 0
