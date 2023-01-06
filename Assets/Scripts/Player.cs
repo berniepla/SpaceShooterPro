@@ -29,7 +29,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        // take the current position and assign start position (0,0,0).
         transform.position = new Vector3(0, 0, 0);
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
 
@@ -74,12 +73,6 @@ public class Player : MonoBehaviour
     private void FireTheLaser()
     {
         _canFire = Time.time + _fireRate;
-
-        //Vector3 currentLaserPosition = new Vector3(0, transform.position.y + 1.05f, 0);
-
-        // if spacekey press,
-        // if triple shot active is true
-        // fire 3 lasers
         if (_isTripleShotActive == true)
         {
             Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
@@ -88,8 +81,6 @@ public class Player : MonoBehaviour
         {
             Instantiate(_laserPrefab, transform.position, Quaternion.identity);
         }
-
-        // instantiate 3 lasers (triple shot prefab)
     }
 
     public void Damage()
@@ -98,9 +89,20 @@ public class Player : MonoBehaviour
 
         if (_lives < 1)
         {
-            // communicate with spawnmanager to stop spawning
             _spawnManager.OnPlayerDeath();
             Destroy(gameObject);
         }
+    }
+
+    public void TripleShotActive()
+    {
+        _isTripleShotActive = true;
+        StartCoroutine(TripleShotPowerDownRoutine());
+    }
+
+    public IEnumerator TripleShotPowerDownRoutine()
+    {
+        yield return new WaitForSeconds(5.0f);
+        _isTripleShotActive = false;
     }
 }

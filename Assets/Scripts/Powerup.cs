@@ -4,20 +4,31 @@ using UnityEngine;
 
 public class Powerup : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private void Start()
-    {
-    }
+    [SerializeField]
+    private float _speed = 3.0f;
 
     // Update is called once per frame
     private void Update()
     {
-        // move down at a speed of 3 (adjust in the inspector)
+        transform.Translate(Vector3.down * _speed * Time.deltaTime);
 
-        // when we leave the screen, destroy
+        if (transform.position.y < -4.5f)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    //on trigger collision
-    // only be collectible by the player (use tags)
-    // on collected, destroy
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            Player player = other.transform.GetComponent<Player>();
+
+            if (player != null)
+            {
+                player.TripleShotActive();
+            }
+            Destroy(this.gameObject);
+        }
+    }
 }

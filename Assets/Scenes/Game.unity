@@ -270,6 +270,7 @@ MonoBehaviour:
   _waitTime: 3
   _enemyPrefab: {fileID: 7039778024345279590, guid: 33705e8db23f3754c92807ae45660218, type: 3}
   _enemyContainer: {fileID: 155409336}
+  _tripleShotPowerupPrefab: {fileID: 2796006601421528565, guid: 48d918cfc5bec5743a609f7a96307860, type: 3}
 --- !u!4 &1087225587
 Transform:
   m_ObjectHideFlags: 0
